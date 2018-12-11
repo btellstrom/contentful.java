@@ -129,6 +129,16 @@ public class CDAClient {
   }
 
   /**
+   * Returns a {@link FetchQuery} for a given {@code type}, which can be used to fulfill the
+   * request synchronously or asynchronously when a callback is provided.
+   * @param <T>
+   * @return
+   */
+  public <T> TransformQuery<T> observeAndTransform(Class<T> type) {
+    return new TransformQuery<>(type, this);
+  }
+
+  /**
    * Returns an {@link ObserveQuery} for a given {@code type}, which can be used to return
    * an {@link Flowable} that fetches the desired resources.
    *
